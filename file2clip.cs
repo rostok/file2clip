@@ -20,8 +20,8 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyCopyright("Copyright © 2016")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
-[assembly: AssemblyVersion("1.0.0.0")]
-[assembly: AssemblyFileVersion("1.0.0.0")]
+[assembly: AssemblyVersion("1.0.0.1")]
+[assembly: AssemblyFileVersion("1.0.0.1")]
 
 namespace File2Clip
 {
@@ -73,11 +73,12 @@ namespace File2Clip
             StringCollection paths = new StringCollection();
             foreach (string s in list) 
             {
+                string t = s.Trim('"');
                 paths.Add( 
-                    System.IO.Path.IsPathRooted(s) ? 
-                      s : 
+                    System.IO.Path.IsPathRooted(t) ? 
+                      t : 
                       System.IO.Directory.GetCurrentDirectory() + 
-                        @"\" + s);
+                        @"\" + t);
             }
             if (paths.Count>0)
             {
